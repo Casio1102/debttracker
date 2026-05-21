@@ -5,39 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Debt Freedom Tracker</title>
   <style>
-    /* Premium Dark Gray Theme Config */
+    /* Fixed the theme variables so it won't be a blank page anymore! */
     :root {
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --color-background-primary: #1E1E24;     /* Dark Gray Card Background */
-      --color-background-secondary: #121214;   /* Darker Gray Page Background */
-      --color-border-secondary: #2D2D34;
-      --color-border-tertiary: #25252A;
-      --color-text-primary: #FFFFFF;
-      --color-text-secondary: #A0AEC0;
+      --color-background-primary: #E2E8F0;
+      --color-background-secondary: #F8F9FA;
+      --color-border-secondary: #E2E8F0;
+      --color-border-tertiary: #EDF2F7;
+      --color-text-primary: #1A202C;
+      --color-text-secondary: #4A5568;
       --color-text-tertiary: #718096;
-      --color-text-danger: #FC8181;
+      --color-text-danger: #E53E3E;
       --border-radius-md: 8px;
       --border-radius-lg: 12px;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:var(--font-sans);background:var(--color-background-secondary);color:var(--color-text-primary);padding:20px}
+    body{font-family:var(--font-sans);background:#E2E8F0;padding:20px}
     .app{width:100%;max-width:800px;margin:0 auto;padding:0.5rem 0}
-    .top-banner{background:#2D2D3A;border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border:1px solid var(--color-border-secondary)}
+    .top-banner{background:#1C1C2E;border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
     .top-banner h1{color:#fff;font-size:15px;font-weight:500}
     .banner-stats{display:flex;gap:12px;flex-wrap:wrap}
-    .bstat{background:rgba(255,255,255,0.05);border-radius:var(--border-radius-md);padding:6px 12px;text-align:center;border:1px solid rgba(255,255,255,0.05)}
+    .bstat{background:rgba(255,255,255,0.08);border-radius:var(--border-radius-md);padding:6px 12px;text-align:center}
     .bstat .val{color:#F39C12;font-size:16px;font-weight:500}
     .bstat .lbl{color:rgba(255,255,255,0.5);font-size:10px;margin-top:1px}
     .tab-bar{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:1rem;overflow-x:auto;padding-bottom:2px}
-    .tab-btn{padding:6px 14px;border-radius:var(--border-radius-md);border:1px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);font-size:12px;cursor:pointer;white-space:nowrap;transition:all .15s}
-    .tab-btn.active{background:#FFFFFF;color:#121214;border-color:#FFFFFF;font-weight:600}
-    .tab-btn.red{border-left:3px solid #E53E3E}
-    .tab-btn.orange{border-left:3px solid #DD6B20}
-    .tab-btn.yellow{border-left:3px solid #D69E2E}
-    .tab-btn.green{border-left:3px solid #38A169}
-    .tab-btn.teal{border-left:3px solid #319795}
-    .month-card{background:var(--color-background-primary);border:1px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:1.25rem;box-shadow: 0 4px 6px rgba(0,0,0,0.2)}
+    .tab-btn{padding:6px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);font-size:12px;cursor:pointer;white-space:nowrap;transition:all .15s}
+    .tab-btn.active{background:#1C1C2E;color:#fff;border-color:#1C1C2E}
+    .tab-btn.red{border-left:3px solid #C0392B}
+    .tab-btn.orange{border-left:3px solid #E67E22}
+    .tab-btn.yellow{border-left:3px solid #F1C40F}
+    .tab-btn.green{border-left:3px solid #27AE60}
+    .tab-btn.teal{border-left:3px solid #1ABC9C}
+    .month-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;box-shadow: 0 1px 3px rgba(0,0,0,0.05)}
     .month-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:8px}
     .month-title{font-size:18px;font-weight:500;color:var(--color-text-primary)}
     .month-quote{font-size:12px;color:var(--color-text-secondary);font-style:italic;margin-top:4px;max-width:400px}
@@ -46,43 +46,43 @@
     .progress-label{display:flex;justify-content:space-between;margin-bottom:6px}
     .progress-label span{font-size:12px;color:var(--color-text-secondary)}
     .progress-label strong{font-size:12px;font-weight:500;color:var(--color-text-primary)}
-    .progress-bar-track{height:10px;background:#2D2D34;border-radius:99px;overflow:hidden}
+    .progress-bar-track{height:10px;background:var(--color-background-secondary);border-radius:99px;overflow:hidden}
     .progress-bar-fill{height:100%;border-radius:99px;transition:width .4s ease}
     .cutoffs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
     @media(max-width:520px){.cutoffs{grid-template-columns:1fr}}
-    .cutoff-card{background:#25252A;border-radius:var(--border-radius-md);padding:1rem;border:1px solid var(--color-border-secondary)}
+    .cutoff-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;border:0.5px solid var(--color-border-tertiary)}
     .cutoff-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:10px;display:flex;justify-content:space-between}
     .cutoff-budget{font-size:11px;color:var(--color-text-tertiary)}
-    .expense-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--color-border-tertiary)}
+    .expense-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
     .expense-row:last-child{border-bottom:none}
     .exp-name{font-size:12px;color:var(--color-text-primary)}
     .exp-amount{font-size:12px;font-weight:500;color:var(--color-text-secondary)}
-    .input-row{display:flex;align-items:center;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid var(--color-border-secondary)}
+    .input-row{display:flex;align-items:center;gap:8px;margin-top:8px;padding-top:8px;border-top:0.5px solid var(--color-border-secondary)}
     .input-row label{font-size:11px;color:var(--color-text-secondary);flex-shrink:0}
-    .input-row input{flex:1;padding:5px 8px;font-size:12px;border:1px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-primary);min-width:0}
-    .pay-btn{padding:5px 10px;font-size:11px;border-radius:var(--border-radius-md);border:1px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
-    .pay-btn:hover{background:var(--color-border-secondary);color:#FFF}
-    .paid-tag{font-size:10px;padding:2px 7px;border-radius:99px;background:#1C3D27;color:#48BB78;font-weight:500;white-space:nowrap}
-    .cutoff-total{display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid var(--color-border-secondary);font-size:12px}
+    .input-row input{flex:1;padding:5px 8px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);min-width:0}
+    .pay-btn{padding:5px 10px;font-size:11px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
+    .pay-btn:hover{background:var(--color-background-secondary)}
+    .paid-tag{font-size:10px;padding:2px 7px;border-radius:99px;background:#EAFAF1;color:#27AE60;font-weight:500;white-space:nowrap}
+    .cutoff-total{display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:0.5px solid var(--color-border-secondary);font-size:12px}
     .cutoff-remaining{font-size:11px;margin-top:4px;text-align:right}
     .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:1.25rem}
-    .scard{background:#25252A;border-radius:var(--border-radius-md);padding:10px 12px;border:1px solid var(--color-border-secondary)}
+    .scard{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px}
     .scard .sv{font-size:18px;font-weight:500;color:var(--color-text-primary)}
     .scard .sl{font-size:10px;color:var(--color-text-secondary);margin-top:2px}
-    .big-green{background:#1C3D27;border-radius:var(--border-radius-lg);padding:1.5rem;text-align:center;margin-bottom:1.25rem;border:1px solid #27AE60}
-    .big-green h2{font-size:22px;font-weight:500;color:#48BB78}
-    .big-green p{font-size:13px;color:#C6F6D5;margin-top:6px}
-    .savings-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--color-border-tertiary)}
+    .big-green{background:#EAFAF1;border-radius:var(--border-radius-lg);padding:1.5rem;text-align:center;margin-bottom:1.25rem}
+    .big-green h2{font-size:22px;font-weight:500;color:#27AE60}
+    .big-green p{font-size:13px;color:#1D6A39;margin-top:6px}
+    .savings-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
     .savings-row:last-child{border-bottom:none}
     .sav-cat{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-text-primary)}
     .sav-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
     .sav-amount{font-size:13px;font-weight:500;color:var(--color-text-secondary)}
     .sav-input-wrap{display:flex;align-items:center;gap:6px}
-    .sav-input{width:90px;padding:4px 8px;font-size:12px;border:1px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-primary);text-align:right}
-    .net-row{margin-top:10px;padding-top:10px;border-top:1px solid var(--color-border-secondary);display:flex;justify-content:space-between;align-items:center}
+    .sav-input{width:90px;padding:4px 8px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);text-align:right}
+    .net-row{margin-top:10px;padding-top:10px;border-top:0.5px solid var(--color-border-secondary);display:flex;justify-content:space-between;align-items:center}
     .net-row .lbl{font-size:12px;color:var(--color-text-secondary)}
     .net-row .val{font-size:16px;font-weight:500}
-    .timeline-strip{display:flex;gap:0;margin-bottom:1rem;border-radius:var(--border-radius-md);overflow:hidden;height:32px;border:1px solid var(--color-border-secondary)}
+    .timeline-strip{display:flex;gap:0;margin-bottom:1rem;border-radius:var(--border-radius-md);overflow:hidden;height:32px}
     .tl-seg{flex:1;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#fff;cursor:pointer;transition:opacity .15s}
     .tl-seg:hover{opacity:0.8}
     .section-lbl{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;margin-top:1rem;text-transform:uppercase;letter-spacing:0.04em}
@@ -95,7 +95,7 @@
   <div class="top-banner">
     <div>
       <h1>Debt Freedom Tracker &nbsp;·&nbsp; 2026–2027</h1>
-      <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">"One cutoff at a time."</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:3px Warmly,">"One cutoff at a time."</div>
     </div>
     <div class="banner-stats">
       <div class="bstat"><div class="val" id="b-total-paid">₱0</div><div class="lbl">Total paid</div></div>
@@ -273,13 +273,13 @@ function saveToLocalStorage() {
   localStorage.setItem('debt_tracker_state', JSON.stringify(state));
 }
 
-const COLOR_MAP = {red:'#E53E3E',orange:'#DD6B20',yellow:'#D69E2E',green:'#38A169',teal:'#319795'};
+const COLOR_MAP = {red:'#C0392B',orange:'#E67E22',yellow:'#D4AC0D',green:'#27AE60',teal:'#1ABC9C'};
 const STATUS_MAP = {
-  red:{label:'High pressure',bg:'#742A2A',fg:'#FED7D7'},
-  orange:{label:'Transition',bg:'#7B341E',fg:'#FEEBC8'},
-  yellow:{label:'Stabilizing',bg:'#744210',fg:'#FEFCBF'},
-  green:{label:'Debt free',bg:'#22543D',fg:'#C6F6D5'},
-  teal:{label:'Growth phase',bg:'#234E52',fg:'#E6FFFA'}
+  red:{label:'High pressure',bg:'#FADBD8',fg:'#C0392B'},
+  orange:{label:'Transition',bg:'#FDEBD0',fg:'#E67E22'},
+  yellow:{label:'Stabilizing',bg:'#FEF9E7',fg:'#B7950B'},
+  green:{label:'Debt free',bg:'#EAFAF1',fg:'#27AE60'},
+  teal:{label:'Growth phase',bg:'#E8F8F5',fg:'#1ABC9C'}
 };
 
 function totalPaid(){
@@ -328,7 +328,7 @@ function renderTimeline(){
     const seg = document.createElement('div');
     seg.className='tl-seg';
     seg.style.background = COLOR_MAP[m.color] || '#888';
-    seg.style.opacity = m.id === state.active ? '1' : '0.4';
+    seg.style.opacity = m.id === state.active ? '1' : '0.55';
     seg.style.fontSize = '8px';
     seg.title = m.label;
     seg.textContent = m.label.replace(' 2026','').replace(' 2027','');
@@ -377,7 +377,7 @@ function renderDebtMonth(m){
     </div>
     <div class="overall-bar-wrap">
       <div class="progress-label"><span>Overall debt freedom</span><strong>${overallPct}% · ₱${overallPaid.toLocaleString()} paid</strong></div>
-      <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${overallPct}%;background:linear-gradient(90deg,#E53E3E,#DD6B20,#38A169)"></div></div>
+      <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${overallPct}%;background:linear-gradient(90deg,#C0392B,#E67E22,#27AE60)"></div></div>
     </div>
     <div class="progress-label" style="margin-bottom:6px"><span>This month</span><strong>₱${monthPaid.toLocaleString()} / ₱${monthTotal.toLocaleString()}</strong></div>
     <div class="progress-bar-track" style="margin-bottom:1.25rem"><div class="progress-bar-fill" style="width:${pct}%;background:${COLOR_MAP[m.color]}"></div></div>
@@ -393,7 +393,7 @@ function renderDebtMonth(m){
       html += `<div class="expense-row">
         <span class="exp-name">${it.name}</span>
         <div style="display:flex;align-items:center;gap:6px">
-          ${p.paid ? `<span class="paid-tag">paid</span><span class="exp-amount" style="text-decoration:line-through;opacity:0.3">₱${p.amount.toLocaleString()}</span>`
+          ${p.paid ? `<span class="paid-tag">paid</span><span class="exp-amount" style="text-decoration:line-through;opacity:0.5">₱${p.amount.toLocaleString()}</span>`
           : `<span class="exp-amount">₱${p.amount.toLocaleString()}</span>`}
         </div>
       </div>`;
@@ -405,7 +405,7 @@ function renderDebtMonth(m){
       <button class="pay-btn" onclick="markAllCutoff('${m.id}',${ci})" style="font-size:10px">All</button>
     </div>
     <div class="cutoff-total"><span style="font-size:12px;color:var(--color-text-secondary)">Paid</span><strong style="font-size:12px">₱${cutoffPaid.toLocaleString()}</strong></div>
-    <div class="cutoff-remaining" style="color:${remaining>0?'var(--color-text-danger)':'#48BB78'};font-size:11px">${remaining>0?'₱'+remaining.toLocaleString()+' remaining':'All cleared'}</div>
+    <div class="cutoff-remaining" style="color:${remaining>0?'var(--color-text-danger)':'#27AE60'};font-size:11px">${remaining>0?'₱'+remaining.toLocaleString()+' remaining':'All cleared'}</div>
     </div>`;
   });
 
@@ -431,11 +431,11 @@ function renderGrowthMonth(m){
       </div>
       <div class="status-badge" style="background:${st.bg};color:${st.fg}">Growth phase</div>
     </div>
-    <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:1rem;padding:8px 12px;background:#25252A;border-radius:var(--border-radius-md);border:1px solid var(--color-border-secondary)">${m.focus}</div>
+    <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:1rem;padding:8px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md)">${m.focus}</div>
     <div class="summary-grid">
       <div class="scard"><div class="sv">₱${INCOME.toLocaleString()}</div><div class="sl">Income</div></div>
       <div class="scard"><div class="sv">₱${actualTotal.toLocaleString()}</div><div class="sl">Allocated</div></div>
-      <div class="scard"><div class="sv" style="color:${netGrowth>=0?'#48BB78':'#FC8181'}">₱${Math.abs(netGrowth).toLocaleString()}</div><div class="sl">${netGrowth>=0?'Unallocated':'Over budget'}</div></div>
+      <div class="scard"><div class="sv" style="color:${netGrowth>=0?'#27AE60':'#C0392B'}">₱${Math.abs(netGrowth).toLocaleString()}</div><div class="sl">${netGrowth>=0?'Unallocated':'Over budget'}</div></div>
       <div class="scard"><div class="sv">₱${totalSavings().toLocaleString()}</div><div class="sl">Total saved (2027)</div></div>
     </div>
     <div class="section-lbl">Budget allocation — edit to track actuals</div>`;
@@ -456,9 +456,9 @@ function renderGrowthMonth(m){
   });
 
   const overallPct = Math.round((actualTotal/INCOME)*100);
-  html += `<div class="progress-bar-track" style="margin-top:12px;margin-bottom:4px"><div class="progress-bar-fill" style="width:${Math.min(overallPct,100)}%;background:#319795"></div></div>
+  html += `<div class="progress-bar-track" style="margin-top:12px;margin-bottom:4px"><div class="progress-bar-fill" style="width:${Math.min(overallPct,100)}%;background:#1ABC9C"></div></div>
     <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-tertiary)"><span>0%</span><span>${overallPct}% allocated</span><span>100%</span></div>
-    <div class="net-row"><span class="lbl">Net unallocated</span><span class="val" id="net-${m.id}" style="color:${netGrowth>=0?'#48BB78':'#FC8181'}">₱${netGrowth.toLocaleString()}</span></div>
+    <div class="net-row"><span class="lbl">Net unallocated</span><span class="val" id="net-${m.id}" style="color:${netGrowth>=0?'#27AE60':'#C0392B'}">₱${netGrowth.toLocaleString()}</span></div>
   </div>`;
   return html;
 }
@@ -478,4 +478,53 @@ window.markPaid = function(mid, ci){
         remaining -= it.amt;
       } else if(!mp[ci][ii].paid && remaining > 0){
         mp[ci][ii].amount = remaining;
-        mp[ci]
+        mp[ci][ii].paid = true;
+        remaining = 0;
+      }
+    });
+  }
+  inp.value = '';
+  saveToLocalStorage();
+  updateBanner();
+  renderContent();
+};
+
+window.markAllCutoff = function(mid, ci){
+  const m = ALL_MONTHS.find(x=>x.id===mid);
+  const mp = state.payments[mid];
+  if(!m || !mp) return;
+  m.cutoffs[ci].items.forEach((it,ii) => { mp[ci][ii].paid = true; mp[ci][ii].amount = it.amt; });
+  saveToLocalStorage();
+  updateBanner();
+  renderContent();
+};
+
+window.updateSavings = function(mid, idx, val){
+  const v = parseFloat(val);
+  if(!isNaN(v) && v >= 0){
+    state.savings[mid][idx].actual = v;
+    saveToLocalStorage();
+    updateBanner();
+    renderContent();
+  }
+};
+
+function renderContent(){
+  const m = ALL_MONTHS.find(x=>x.id===state.active);
+  if(!m) return;
+  const content = document.getElementById('tab-content');
+  if(m.phase === 'growth') content.innerHTML = renderGrowthMonth(m);
+  else content.innerHTML = renderDebtMonth(m);
+}
+
+function render(){
+  renderTabs();
+  renderContent();
+  updateBanner();
+}
+
+initOrCreateState();
+render();
+</script>
+</body>
+</html>
